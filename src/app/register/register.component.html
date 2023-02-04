@@ -1,0 +1,11 @@
+<p>register works!</p>
+<form (ngSubmit)="save(myForm)" #myForm="ngForm">
+    <input [(ngModel)]="user.Name" name="name" minlength="2" required maxlength="9" name="ngModel" value="name"/> 
+ <input type="password" [(ngModel)]="user.Password" name="password" required password="ngModel"/>
+ <input [(ngModel)]="user.Address" name="address" required address="ngModel" /> 
+ <input type="email" [(ngModel)]="user.Email" name="email" required email="ngModel" /> 
+
+<input type="submit" [disabled]="!myForm.valid" />
+<p *ngIf="exist">already exists!</p>
+ </form> 
+ <!-- public Id:number,public :string,public Address:string,public Mail:string,public Password:string -->

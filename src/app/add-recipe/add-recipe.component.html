@@ -1,0 +1,18 @@
+<p>add-recipe works!</p>
+<form (ngSubmit)="save(myForm)" #myForm="ngForm">
+   
+    <input [(ngModel)]="recipe.Name" name="name" name="ngModel" placeholder="שם מתכון" required/> 
+    <input [(ngModel)]="recipe.Image" name="image" image="ngModel" placeholder="תמונה"/>  
+    <input [(ngModel)]="recipe.CategoryId" name="Category" category="ngModel" placeholder="קטגוריה" required/> 
+    <input [(ngModel)]="recipe.PreparationTimeInMinute" name="time" time="ngModel" placeholder="זמן הכנה"required/> 
+    <input [(ngModel)]="recipe.Level" name="level" level="ngModel" placeholder="דרגת קושי" required/> 
+    <div id="wraperCom">
+        <input [(ngModel)]="com" name="layer" layer="ngModel" placeholder="רכיבים" class="layers"   (blur)="changeCom()"/>
+    </div>
+    
+    <!-- <input [(ngModel)]="name" name="name" name="ngModel" placeholder="אופן ההכנה"/>  -->
+    
+ 
+<input type="submit" [disabled]="!myForm.valid" />
+ </form> 
+ 
