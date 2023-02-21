@@ -1,7 +1,12 @@
 <div>
-  <!-- <app-all-recipe/>
- 
-  <a routerLink="login">כניסה</a>
-  <router-outlet></router-outlet> -->
-  <app-add-recipe></app-add-recipe>
+  <h3>שלום ל{{userName}}</h3>
+   <app-all-recipe/>
+ <a routerLink="login">כניסה</a>
+
+  <!-- <app-add-recipe></app-add-recipe>  -->
+  <!-- <a routerLink="add">add</a> -->
+  <!-- <a routerLink="all">all</a> -->
+
+  <router-outlet></router-outlet>
+  <input type="button" value="יציאה"  (click)="logOut()" />
 </div>

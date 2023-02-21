@@ -1,3 +1,3 @@
 export default class Category{
-    constructor(Id:number,Name:string,Icon:string){}
+    constructor(public Id:number,public Name:string,public Icon:string){}
 }

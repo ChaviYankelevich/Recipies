@@ -1,18 +1,23 @@
 <p>add-recipe works!</p>
 <form (ngSubmit)="save(myForm)" #myForm="ngForm">
    
-    <input [(ngModel)]="recipe.Name" name="name" name="ngModel" placeholder="שם מתכון" required/> 
-    <input [(ngModel)]="recipe.Image" name="image" image="ngModel" placeholder="תמונה"/>  
-    <input [(ngModel)]="recipe.CategoryId" name="Category" category="ngModel" placeholder="קטגוריה" required/> 
-    <input [(ngModel)]="recipe.PreparationTimeInMinute" name="time" time="ngModel" placeholder="זמן הכנה"required/> 
-    <input [(ngModel)]="recipe.Level" name="level" level="ngModel" placeholder="דרגת קושי" required/> 
-    <div id="wraperCom">
-        <input [(ngModel)]="com" name="layer" layer="ngModel" placeholder="רכיבים" class="layers"   (blur)="changeCom()"/>
-    </div>
+    <input [(ngModel)]="recipe.Name" name="name" name="ngModel" placeholder="שם מתכון" required/> <br/><br/>
+    <input [(ngModel)]="recipe.Image" name="image" image="ngModel" placeholder="תמונה"/>  <br/><br/>
+    <!-- <input [(ngModel)]="recipe.CategoryId" name="Category" category="ngModel" placeholder="קטגוריה" required/>  -->
+    <select required [(ngModel)]="category" name="category" category="ngModel">
+<option *ngFor="let item of categories">{{item.Name}}</option>
+    </select><br/><br/>
+    <input [(ngModel)]="recipe.PreparationTimeInMinute" type="number" name="time" time="ngModel" placeholder="זמן הכנה"required/> <br/><br/>
+    <input [(ngModel)]="recipe.Level" name="level" level="ngModel" type="number" placeholder="דרגת קושי" required/> <br/><br/>
+    <input [(ngModel)]="description" name="description" description="ngModel" placeholder="תיאור" (blur)="onDesc()"/> <br/><br/>
+    <input [(ngModel)]="com" name="layer" layer="ngModel" placeholder="רכיבים" id="layers"   (blur)="changeCom()"/><br/><br/>
+    <input [(ngModel)]="preperation" name="preperation" preperation="ngModel" placeholder="אופן ההכנה" id="preperation"  (blur)="changePre()"/><br/><br/>
     
-    <!-- <input [(ngModel)]="name" name="name" name="ngModel" placeholder="אופן ההכנה"/>  -->
+    
+    
     
  
 <input type="submit" [disabled]="!myForm.valid" />
+<!-- <router-outlet></router-outlet> -->
  </form> 
  

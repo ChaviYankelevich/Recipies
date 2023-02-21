@@ -1,8 +1,26 @@
 <p>login works!</p>
 <form (ngSubmit)="save(myForm)" #myForm="ngForm">
-   
-    <input [(ngModel)]="name" name="name" minlength="2" required maxlength="9" name="ngModel" /> 
- <input type="password" [(ngModel)]="password" name="password" required password="ngModel"/>
+    <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your name</mat-label>
+          <input matInput [(ngModel)]="name" name="name" name="ngModel">         
+        </mat-form-field>
+      </p>
+
+    <!-- <input   minlength="2" required maxlength="9"  />  -->
+  <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"[(ngModel)]="password" name="password"password="ngModel">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="pas">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </p>
+       
+
+      
+ <!-- <input type="password"   required /> -->
 <input type="submit" [disabled]="!myForm.valid" />
  </form> 
 

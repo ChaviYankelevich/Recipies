@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import User from 'src/models/User';
-import { UserService } from 'src/services/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { Output, EventEmitter } from '@angular/core';
+import { LocalStrageService } from '../services/local-strage.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -17,7 +18,7 @@ export class RegisterComponent {
  service:UserService;
 //  @Output()
 //  itemEvent = new EventEmitter<User>();
-  constructor(public Active: ActivatedRoute,public UserService:UserService) {
+  constructor(public Active: ActivatedRoute,public UserService:UserService,public localStorage:LocalStrageService) {
     this.Active.params.subscribe(par => {
       //par- אובייקט שמכיל את כל הפרטמרטים שנשלחו לניתוב זה כאובייקט
       this.name = par.name;
@@ -36,8 +37,11 @@ export class RegisterComponent {
     this.service.Register(this.user).subscribe(r=>{
       if(r==true)
           alert("your password is wrong")
-      // else if(r==this.user)
-      //      this.itemEvent.emit(this.user);
+      else 
+      {
+        this.localStorage.currentUser.next(this.user);
+        this.localStorage.setInStorage(this.user)
+      }
         });
   }
 }

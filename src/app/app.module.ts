@@ -11,9 +11,17 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import Recipy from 'src/models/Recipy';
+import { FormatHourPipe } from './pipes/format-hour.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 const routes: Routes = [
   { path: "register/:name", component: RegisterComponent },
-  {path:"login",component:LoginComponent}
+  {path:"login",component:LoginComponent},
+  {path:"all",component:AllRecipeComponent},
+  {path:"add",component:AddRecipeComponent}
   ]
 
 @NgModule({
@@ -25,6 +33,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     AddRecipeComponent,
+    FormatHourPipe,
 
   ],
   imports: [
@@ -32,7 +41,11 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
    FormsModule,
-   RouterModule.forRoot(routes)
+   RouterModule.forRoot(routes),
+   MatFormFieldModule,
+   BrowserAnimationsModule,
+   MatIconModule,
+   MatInputModule   
   ],
   providers: [],
   bootstrap: [AppComponent]

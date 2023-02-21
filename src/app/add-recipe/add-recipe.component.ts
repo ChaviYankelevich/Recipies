@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import Category from 'src/models/Category';
 import Layer from 'src/models/Layer';
 import Recipy from 'src/models/Recipy';
+import { CategoryService } from 'src/app/services/category.services.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -8,34 +11,47 @@ import Recipy from 'src/models/Recipy';
   styleUrls: ['./add-recipe.component.css']
 })
 export class AddRecipeComponent {
-recipe:Recipy=new Recipy(null,null,null,null,null,null,null,null,null,null,null);
+
+categories:Category[];
+
+constructor(public categoryService:CategoryService,public act:Router){
+  this.categoryService.getAllCategories().subscribe(c => {
+    this.categories = c;
+    console.log(this.categories);
+});
+}
+recipe:Recipy=new Recipy(null,null,null,null,null,null,null,[],null,null,null);
 components:string[]=[];
-lay:Layer[]=[];
-index:number=0;
-component:number=0;
+layers:Layer[]=[];
 com:string;
 element:any;
-wraper:any;
+description:string;
+layer:Layer=new Layer(null,null);
+preperation:string;
+category:string;
 save(form)
 {
-
+this.recipe.CategoryId=this.categories.find(cat=>cat.Name==this.category).Id;
+// swal("Good job!", "You clicked the button!", "success");
+this.act.navigate(["all/",{recipe:JSON.stringify(this.recipe)}]);
+}
+onDesc(){
+console.log("hi")
+this.layers.push(new Layer(this.description,[]));
+console.log(this.layers);
 }
 changeCom(){
-  console.log(this.com);
-this.components.push(this.com);
-this.element=document.getElementsByClassName("layers")[0];
-this.element.removeAttribute('class','layers');
-this.element.remove();
-this.element=document.createElement("input");
+if(this.layers.length==0)
+      this.layers.push(new Layer("",[]));
+this.layers[this.layers.length-1].Components.push(this.com);
+this.element=document.getElementById("layers");
 console.log(this.element)
-this.element.setAttribute('class', 'layers');
-this.element.addEventListener('blur',this.changeCom)
-this.element.setAttribute("[(ngModel)]","com")
-this.element.setAttribute("name","layer")
-this.element.setAttribute("layer","ngModel")
-
-document.getElementById("wraperCom")?.appendChild(this.element)
-
-
+this.element.value="";
+}
+changePre(){
+  this.recipe.Preparation.push(this.preperation);
+  this.element=document.getElementById("preperation");
+console.log(this.element)
+this.element.value="";
 }
 }

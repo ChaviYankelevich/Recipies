@@ -3,21 +3,12 @@
 
 <p>{{recipe.Name}} שם </p>
 <!-- <p>{{recipe.CategoryId}}</p> -->
-<p> {{recipe.PreparationTimeInMinute}} זמן הכנה: </p>
+<p>  זמן הכנה: {{recipe.PreparationTimeInMinute|formatHour}}</p>
 <img class="images" src="assets/images/{{recipe.Image}}" alt="i">
-<div class="d">
+<!-- <div class="d"> -->
  <div *ngFor="let item of recipe.Level|stars"> 
 <img src="assets/icons/{{item}}" alt="i">  
-</div></div>
-  <!--
-</div> -->
-<!-- <p>{{recipe.Level}}</p> -->
-<!-- <p>{{recipe.AddDate}}</p> -->
-<!-- <p>{{recipe.CategoryId}}</p> -->
-<!--todo layer[] -->
-<!-- <div *ngFor="let item of recipe.Preparation"><P>{{item}}</P></div> -->
 
-<!-- <p>{{recipe.UserId}}</p> -->
    
 </div>
 
