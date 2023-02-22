@@ -1,4 +1,46 @@
 <div class="all">
+
+<!-- <form class="d-flex" role="search" (ngSubmit)="save()">
+  <p>
+  <input class="form-control me-2" type="search" placeholder="חפש לפי שם" aria-label="Search" [(ngModel)]="recipeName" name="recipeName" recipeName="ngModel">
+</p>
+<p><mat-form-field appearance="fill">
+<mat-label>בחר קטגוריה</mat-label> 
+<mat-select [(ngModel)]="category" name="category" category="ngModel">
+<mat-option *ngFor="let myCategory of categories" [value]="myCategory.Name">
+{{myCategory.Name}}
+</mat-option>
+</mat-select>
+</mat-form-field>
+</p>
+<p>
+<input type="range" class="form-range" id="customRange1">
+</p>
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form> -->
+<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value">
+  <mat-drawer #drawer [mode]="mode.value">I'm a drawer</mat-drawer>
+  <mat-drawer-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Sidenav mode</mat-label>
+      <mat-select #mode value="side">
+        <mat-option value="side">Side</mat-option>
+        <mat-option value="over">Over</mat-option>
+        <mat-option value="push">Push</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Has backdrop</mat-label>
+      <mat-select #hasBackdrop>
+        <mat-option>Unset</mat-option>
+        <mat-option [value]="true">True</mat-option>
+        <mat-option [value]="false">False</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+  </mat-drawer-content>
+</mat-drawer-container>
+
 <div *ngFor="let item of recipies">
   <div> <app-small-recipe [recipe]="item"/> </div>
 </div>

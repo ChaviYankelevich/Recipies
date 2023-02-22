@@ -8,7 +8,7 @@ import User from 'src/models/User';
 export class LocalStrageService {
   currentUser = new BehaviorSubject<User>(null);
   constructor() {  }
-  setInStorage(user) {
+  setInStorage(user:User) {
       localStorage.setItem("currentUser", JSON.stringify(user));
 }
 getFromStorage() {
